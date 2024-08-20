@@ -1,0 +1,85 @@
+[
+  {
+    "file": "src/Vault.sol",
+    "formulas": [
+      "\\mathsf{at}(withdrawers_, offset + i)",
+      "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
+      "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
+      "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
+      "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
+      "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))",
+      "depositValue + \\frac{amount \\cdot priceX96}{Q96}",
+      "\\frac{depositValue \\cdot totalSupply}{totalValue}",
+      "\\frac{lpAmount \\cdot totalValue}{totalSupply}",
+      "\\frac{value \\cdot D9 - feeD9}{D9}",
+      "\\frac{value \\cdot Q96}{ratiosX96Value}",
+      "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))"
+    ]
+  },
+  {
+    "file": "src/libraries/external/FullMath.sol",
+    "formulas": [
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "inv \\cdot 2.0 - denominator \\cdot inv",
+      "\\frac{a \\cdot b}{denominator}"
+    ]
+  },
+  {
+    "file": "src/modules/erc20/ERC20SwapModule.sol",
+    "formulas": [
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenIn), this)",
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenOut), this)",
+      "tokenInBefore - \\mathsf{balanceOf}(\\mathsf{IERC20}(tokenIn), this)",
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenOut), this) - tokenOutBefore"
+    ]
+  },
+  {
+    "file": "src/modules/erc20/ERC20TvlModule.sol",
+    "formulas": ["\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))"]
+  },
+  {
+    "file": "src/modules/obol/StakingModule.sol",
+    "formulas": [
+      "\\mathsf{IDepositSecurityModule}(\\mathsf{depositSecurityModule}(lidoLocator))",
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(weth), this)",
+      "\\mathsf{getBufferedEther}(\\mathsf{ISteth}(steth))",
+      "\\mathsf{min}(\\mathsf{getStakingModuleMaxDepositsCount}(\\mathsf{IStakingRouter}(\\mathsf{STAKING_ROUTER}(depositSecurityModule)), stakingModuleId, wethBalance + bufferedEther - unfinalizedStETH), \\mathsf{getMaxDeposits}(depositSecurityModule))",
+      "\\mathsf{min}(wethBalance, 32.0 \\cdot maxDepositsCount)"
+    ]
+  },
+  {
+    "file": "src/oracles/ChainlinkOracle.sol",
+    "formulas": [
+      "\\mathsf{decimals}(\\mathsf{IAggregatorV3}(aggregatorV3))",
+      "\\frac{tokenPrice \\cdot 10.0^{baseDecimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(baseToken))} \\cdot Q96}{baseTokenPrice \\cdot 10.0^{decimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(token))}}"
+    ]
+  },
+  {
+    "file": "src/oracles/ManagedRatiosOracle.sol",
+    "formulas": [
+      "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))",
+      "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))"
+    ]
+  },
+  {
+    "file": "src/oracles/WStethRatiosAggregatorV3.sol",
+    "formulas": [
+      "\\mathsf{getStETHByWstETH}(\\mathsf{IWSteth}(wsteth), 10.0^{decimals})"
+    ]
+  },
+  {
+    "file": "src/strategies/SimpleDVTStakingStrategy.sol",
+    "formulas": ["\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), vault)"]
+  },
+  {
+    "file": "src/utils/DepositWrapper.sol",
+    "formulas": [
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), this)",
+      "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), wrapper)"
+    ]
+  }
+]
