@@ -26,9 +26,25 @@
     },
       {
         "type": "highlight",
-        "description": "This is the emergencyWithdraw function declaration. It's part of a larger Vault contract that manages deposits and withdrawals. This function allows users to withdraw their funds in emergency situations, bypassing normal withdrawal procedures.",
+        "description": "This is the emergencyWithdraw function declaration. This function allows users to withdraw their funds in emergency situations, bypassing normal withdrawal procedures.",
         "file": "src/Vault.sol",
         "highlight": [{ "start": 377, "end": 384 }],
+        "title": "",
+        "id": "234234"
+      },
+      {
+        "type": "highlight",
+        "description": "Here we check for reentrency (read in contract ReentrancyGuard) and make sure this is called within the deadline(up next).", 
+        "file": "src/Vault.sol",
+        "highlight": [{ "start": 382, "end": 383 }],
+        "title": "",
+        "id": "324234234"
+      },
+      {
+        "type": "highlight",
+        "description": "Here is the logic for the deadline modifier",
+        "file": "src/Vault.sol",
+        "highlight": [{ "start": 30, "end": 33 }],
         "title": "",
         "id": "1"
       },
@@ -100,7 +116,7 @@
         "type": "highlight",
         "description": "This starts a loop that will process each token in the pool. It calculates and transfers the user's share of each token.",
         "file": "src/Vault.sol",
-        "highlight": [{ "start": 404, "end": 439 }],
+        "highlight": [{ "start": 404, "end": 417 }],
         "title": "",
         "id": "10"
       },
@@ -108,7 +124,7 @@
         "type": "highlight",
         "description": "These lines clean up after the withdrawal. They remove the withdrawal request, remove the user from the pending withdrawers list, and burn the LP tokens that were withdrawn.",
         "file": "src/Vault.sol",
-        "highlight": [{ "start": 440, "end": 442 }],
+        "highlight": [{ "start": 418, "end": 420 }],
         "title": "",
         "id": "11"
       },
@@ -116,7 +132,7 @@
         "type": "highlight",
         "description": "This emits an event with details about the emergency withdrawal that just occurred. It's important for transparency and off-chain tracking of contract activities.",
         "file": "src/Vault.sol",
-        "highlight": [{ "start": 443, "end": 443 }],
+        "highlight": [{ "start": 421, "end": 421 }],
         "title": "",
         "id": "12"
       },
