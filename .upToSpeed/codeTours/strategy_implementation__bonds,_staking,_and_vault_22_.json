@@ -1,1 +1,112 @@
-{"title":"Strategy Implementation: Bonds, Staking, and Vault","id":"/GJcvuexvk7hhS9BJ7EU1/CDO/RTJ2y4x083usdzvE8=","steps":[{"type":"textOnly","description":"Welcome to the tour of strategy implementation and integration in the Mellow LRT project. We'll explore the DefaultBondStrategy and SimpleDVTStakingStrategy, their interaction with the Vault, and the flexibility of the strategy system.","title":"","id":"290"},{"type":"revealFiles","files":["src/strategies/DefaultBondStrategy.sol"],"description":"Let's start by examining the DefaultBondStrategy contract. This strategy manages bond deployments and interacts with the Vault and other modules.","title":"","id":"291"},{"type":"highlight","description":"Here are the key components of DefaultBondStrategy. Note the immutable references to the Vault, ERC20TvlModule, and DefaultBondModule.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":11,"end":22}],"title":"","id":"292"},{"type":"highlight","description":"The _deposit function in DefaultBondStrategy is crucial for managing bond deployments. It iterates through the vault's TVL (Total Value Locked) and calculates deposit amounts for each token and associated bond.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":51,"end":53}],"title":"","id":"301"},{"type":"highlight","description":"The function starts by retrieving the TVL data for the vault using the erc20TvlModule. It then iterates through each token in the TVL, retrieving the associated bond data.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":52,"end":57}],"title":"","id":"302"},{"type":"highlight","description":"For each bond associated with a token, the function calculates the deposit amount. This calculation uses the FullMath library to perform precise multiplication and division, considering the token's TVL amount and the bond's ratio.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":58,"end":64}],"title":"","id":"303"},{"type":"highlight","description":"After calculating the deposit amount, the function uses vault.delegateCall to interact with the bondModule. This call deposits the calculated amount into the specific bond, effectively deploying the assets to generate yield.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":65,"end":72}],"title":"","id":"304"},{"type":"highlight","description":"The _processWithdrawals function handles withdrawal requests. It withdraws from bonds and processes withdrawals through the Vault.","file":"src/strategies/DefaultBondStrategy.sol","highlight":[{"start":96,"end":121}],"title":"","id":"294"},{"type":"revealFiles","files":["src/strategies/SimpleDVTStakingStrategy.sol"],"description":"Now, let's examine the SimpleDVTStakingStrategy. This strategy manages staking operations and interacts with the Vault and StakingModule.","title":"","id":"295"},{"type":"highlight","description":"Here are the key components of SimpleDVTStakingStrategy. Note the immutable references to the Vault and StakingModule.","file":"src/strategies/SimpleDVTStakingStrategy.sol","highlight":[{"start":8,"end":17}],"title":"","id":"296"},{"type":"highlight","description":"The convertAndDeposit function uses delegateCall to interact with the StakingModule for converting and depositing assets.","file":"src/strategies/SimpleDVTStakingStrategy.sol","highlight":[{"start":36,"end":58}],"title":"","id":"297"},{"type":"highlight","description":"The processWithdrawals function in SimpleDVTStakingStrategy handles withdrawal requests and potentially stakes some of the withdrawn assets.","file":"src/strategies/SimpleDVTStakingStrategy.sol","highlight":[{"start":61,"end":83}],"title":"","id":"298"},{"type":"highlight","description":"The Vault's delegateCall function is a cornerstone of strategy flexibility in Mellow LRT. It enables strategies to execute actions through the Vault, allowing for modular and extensible implementations. This design facilitates easy integration of new yield generation mechanisms without modifying the core Vault contract. Note how it includes security checks and event emission for transparency.","file":"src/Vault.sol","highlight":[{"start":267,"end":282}],"title":"","id":"299"},{"type":"textOnly","description":"Let's compare DefaultBondStrategy and SimpleDVTStakingStrategy:\n\n1. Common Patterns:\n   - Both use delegateCall to interact with their respective modules\n   - Both implement withdrawal processing\n   - Both are integrated with the Vault\n\n2. Unique Features:\n   - DefaultBondStrategy: Manages multiple bonds with ratio-based allocation\n   - SimpleDVTStakingStrategy: Handles staking operations with a single asset\n\n3. Flexibility:\n   - The strategy system allows for different yield generation mechanisms\n   - New strategies can be easily integrated by implementing the required interfaces\n\nThis modular design enables the Mellow LRT system to adapt to various DeFi protocols and yield opportunities, showcasing the extensibility of the strategy system.","title":"","id":"300"}]}
+{
+  "title": "Strategy Implementation: Bonds, Staking, and Vault",
+  "id": "/GJcvuexvk7hhS9BJ7EU1/CDO/RTJ2y4x083usdzvE8=",
+  "steps": [
+    {
+      "type": "textOnly",
+      "description": "Welcome to the tour of strategy implementation and integration in the Mellow LRT project. We'll explore the DefaultBondStrategy and SimpleDVTStakingStrategy, their interaction with the Vault, and the flexibility of the strategy system.",
+      "title": "",
+      "id": "290"
+    },
+    {
+      "type": "revealFiles",
+      "files": ["src/strategies/DefaultBondStrategy.sol"],
+      "description": "Let's start by examining the DefaultBondStrategy contract. This strategy manages bond deployments and interacts with the Vault and other modules.",
+      "title": "",
+      "id": "291"
+    },
+    {
+      "type": "highlight",
+      "description": "Here are the key components of DefaultBondStrategy. Note the immutable references to the Vault, ERC20TvlModule, and DefaultBondModule.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 11, "end": 22 }],
+      "title": "",
+      "id": "292"
+    },
+    {
+      "type": "highlight",
+      "description": "The _deposit function in DefaultBondStrategy is crucial for managing bond deployments. It iterates through the vault's TVL (Total Value Locked) and calculates deposit amounts for each token and associated bond.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 51, "end": 53 }],
+      "title": "",
+      "id": "301"
+    },
+    {
+      "type": "highlight",
+      "description": "The function starts by retrieving the TVL data for the vault using the erc20TvlModule. It then iterates through each token in the TVL, retrieving the associated bond data.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 52, "end": 57 }],
+      "title": "",
+      "id": "302"
+    },
+    {
+      "type": "highlight",
+      "description": "For each bond associated with a token, the function calculates the deposit amount. This calculation uses the FullMath library to perform precise multiplication and division, considering the token's TVL amount and the bond's ratio.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 58, "end": 64 }],
+      "title": "",
+      "id": "303"
+    },
+    {
+      "type": "highlight",
+      "description": "After calculating the deposit amount, the function uses vault.delegateCall to interact with the bondModule. This call deposits the calculated amount into the specific bond, effectively deploying the assets to generate yield.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 65, "end": 72 }],
+      "title": "",
+      "id": "304"
+    },
+    {
+      "type": "highlight",
+      "description": "The _processWithdrawals function handles withdrawal requests. It withdraws from bonds and processes withdrawals through the Vault.",
+      "file": "src/strategies/DefaultBondStrategy.sol",
+      "highlight": [{ "start": 96, "end": 121 }],
+      "title": "",
+      "id": "294"
+    },
+    {
+      "type": "revealFiles",
+      "files": ["src/strategies/SimpleDVTStakingStrategy.sol"],
+      "description": "Now, let's examine the SimpleDVTStakingStrategy. This strategy manages staking operations and interacts with the Vault and StakingModule.",
+      "title": "",
+      "id": "295"
+    },
+    {
+      "type": "highlight",
+      "description": "Here are the key components of SimpleDVTStakingStrategy. Note the immutable references to the Vault and StakingModule.",
+      "file": "src/strategies/SimpleDVTStakingStrategy.sol",
+      "highlight": [{ "start": 8, "end": 17 }],
+      "title": "",
+      "id": "296"
+    },
+    {
+      "type": "highlight",
+      "description": "The convertAndDeposit function uses delegateCall to interact with the StakingModule for converting and depositing assets.",
+      "file": "src/strategies/SimpleDVTStakingStrategy.sol",
+      "highlight": [{ "start": 36, "end": 58 }],
+      "title": "",
+      "id": "297"
+    },
+    {
+      "type": "highlight",
+      "description": "The processWithdrawals function in SimpleDVTStakingStrategy handles withdrawal requests and potentially stakes some of the withdrawn assets.",
+      "file": "src/strategies/SimpleDVTStakingStrategy.sol",
+      "highlight": [{ "start": 61, "end": 83 }],
+      "title": "",
+      "id": "298"
+    },
+    {
+      "type": "highlight",
+      "description": "The Vault's delegateCall function is a cornerstone of strategy flexibility in Mellow LRT. It enables strategies to execute actions through the Vault, allowing for modular and extensible implementations. This design facilitates easy integration of new yield generation mechanisms without modifying the core Vault contract. Note how it includes security checks and event emission for transparency.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 267, "end": 282 }],
+      "title": "",
+      "id": "299"
+    },
+    {
+      "type": "textOnly",
+      "description": "Let's compare DefaultBondStrategy and SimpleDVTStakingStrategy:\n\n1. Common Patterns:\n   - Both use delegateCall to interact with their respective modules\n   - Both implement withdrawal processing\n   - Both are integrated with the Vault\n\n2. Unique Features:\n   - DefaultBondStrategy: Manages multiple bonds with ratio-based allocation\n   - SimpleDVTStakingStrategy: Handles staking operations with a single asset\n\n3. Flexibility:\n   - The strategy system allows for different yield generation mechanisms\n   - New strategies can be easily integrated by implementing the required interfaces\n\nThis modular design enables the Mellow LRT system to adapt to various DeFi protocols and yield opportunities, showcasing the extensibility of the strategy system.",
+      "title": "",
+      "id": "300"
+    }
+  ]
+}

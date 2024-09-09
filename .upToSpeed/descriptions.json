@@ -1,0 +1,10 @@
+{
+  "": {
+    "description": "The amount of tokens that the user wants to deposit",
+    "type": "directory"
+  },
+  "src/Vault.sol": {
+    "description": "The Vault contract is the main contract that manages the deposit and withdrawal of tokens. It is the contract that the user interacts with to deposit and withdraw tokens. It is also the contract that the operator interacts with to manage the pool.",
+    "type": "file"
+  }
+}

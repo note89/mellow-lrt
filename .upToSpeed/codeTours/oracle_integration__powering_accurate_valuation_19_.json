@@ -1,1 +1,74 @@
-{"title":"Oracle Integration: Powering Accurate Valuation","id":"kHNHIg+IoproRVWMqXpDSg+JoFxx5wcz/crwfGmbah0=","steps":[{"type":"textOnly","description":"Welcome to the tour of the Oracle System and Price Feeds in the Mellow LRT project. This system is crucial for providing reliable price and ratio information, enabling accurate valuation and risk management within the Vault. We'll explore the key components, their interactions, and how they ensure data integrity and reliability.","title":"","id":"259"},{"type":"highlight","description":"Let's start by examining the IPriceOracle interface, which defines the standard for price oracles in the project.","file":"src/interfaces/oracles/IPriceOracle.sol","highlight":[{"start":1,"end":22}],"title":"","id":"260"},{"type":"highlight","description":"Let's examine the ChainlinkOracle contract, which implements the IPriceOracle interface. This contract is crucial for interacting with Chainlink price feeds and providing reliable price data to the Vault.","file":"src/oracles/ChainlinkOracle.sol","highlight":[{"start":1,"end":31}],"title":"","id":"271"},{"type":"highlight","description":"Now, let's look at the core functions responsible for price retrieval and validation in the ChainlinkOracle contract.","file":"src/oracles/ChainlinkOracle.sol","highlight":[{"start":56,"end":101}],"title":"","id":"272"},{"type":"highlight","description":"Next, we'll examine the IRatiosOracle interface, which defines the standard for providing target allocation ratios.","file":"src/interfaces/oracles/IRatiosOracle.sol","highlight":[{"start":1,"end":22}],"title":"","id":"262"},{"type":"highlight","description":"The ManagedRatiosOracle contract is a crucial component of the Oracle System, implementing the IRatiosOracle interface to manage target ratios for vault tokens. Let's examine its key functions and features:\n\n1. updateRatios: This function allows admins to update target ratios for a vault. It performs important validations:\n   - Ensures the number of ratios matches the number of underlying tokens.\n   - Verifies that the cumulative ratio equals Q96 (2^96), maintaining precision.\n\n2. getTargetRatiosX96: Retrieves the current target ratios for a vault.\n\n3. tokensHash: A unique hash of the vault's underlying tokens, used to validate that the stored ratios correspond to the current set of tokens.\n\nThese features ensure that ratio updates are secure, accurate, and aligned with the vault's current token composition. The ManagedRatiosOracle plays a vital role in maintaining the desired token allocation within the vault, directly impacting deposit and withdrawal operations.","file":"src/oracles/ManagedRatiosOracle.sol","highlight":[{"start":1,"end":49}],"title":"","id":"263"},{"type":"highlight","description":"The Vault contract integrates ChainlinkOracle and ManagedRatiosOracle for precise valuation and risk management. Let's examine the deposit function to see this integration in action:\n\n1. Lines 308-309: The Vault fetches target ratios from the ManagedRatiosOracle.\n2. Lines 311-317: It calculates the deposit ratio based on these target ratios, ensuring balanced deposits.\n3. Lines 319-341: The Vault uses the ChainlinkOracle (via priceOracle) to get token prices and calculate total value.\n4. Lines 323-328: Price data is fetched for each token, crucial for accurate valuation.\n5. Lines 329-341: The function calculates deposit and total values, essential for determining the correct amount of LP tokens to mint.\n\nThis integration ensures that deposits maintain the desired token ratios and are valued accurately, which is critical for risk management in a multi-asset vault.","file":"src/Vault.sol","highlight":[{"start":282,"end":350}],"title":"","id":"264"},{"type":"highlight","description":"The VaultConfigurator contract manages critical Vault parameters, including oracle settings. It implements a two-step process for updating these settings, enhancing security:\n\n1. Staging: An admin proposes a new oracle address (e.g., stagePriceOracle, stageRatiosOracle).\n2. Committing: After a delay, the admin can finalize the change (e.g., commitPriceOracle, commitRatiosOracle).\n\nThis process allows for review and provides a window to detect and prevent malicious changes. The contract also includes rollback functions as an additional safety measure.\n\nNote the separate functions for price and ratios oracles, reflecting their distinct roles in the system. This granular control allows for precise management of the Vault's price feed and allocation strategy.","file":"src/VaultConfigurator.sol","highlight":[{"start":508,"end":545}],"title":"","id":"265"},{"type":"textOnly","description":"We've explored the key components of the Oracle System and Price Feeds in the Mellow LRT project. The ChainlinkOracle provides reliable price data, while the ManagedRatiosOracle manages target ratios for vault tokens. These oracles are integrated into the Vault contract for accurate valuation and risk management. The VaultConfigurator ensures proper setup and management of oracle settings, contributing to the overall security and reliability of the system.","title":"","id":"266"}]}
+{
+  "title": "Oracle Integration: Powering Accurate Valuation",
+  "id": "kHNHIg+IoproRVWMqXpDSg+JoFxx5wcz/crwfGmbah0=",
+  "steps": [
+    {
+      "type": "textOnly",
+      "description": "Welcome to the tour of the Oracle System and Price Feeds in the Mellow LRT project. This system is crucial for providing reliable price and ratio information, enabling accurate valuation and risk management within the Vault. We'll explore the key components, their interactions, and how they ensure data integrity and reliability.",
+      "title": "",
+      "id": "259"
+    },
+    {
+      "type": "highlight",
+      "description": "Let's start by examining the IPriceOracle interface, which defines the standard for price oracles in the project.",
+      "file": "src/interfaces/oracles/IPriceOracle.sol",
+      "highlight": [{ "start": 1, "end": 22 }],
+      "title": "",
+      "id": "260"
+    },
+    {
+      "type": "highlight",
+      "description": "Let's examine the ChainlinkOracle contract, which implements the IPriceOracle interface. This contract is crucial for interacting with Chainlink price feeds and providing reliable price data to the Vault.",
+      "file": "src/oracles/ChainlinkOracle.sol",
+      "highlight": [{ "start": 1, "end": 31 }],
+      "title": "",
+      "id": "271"
+    },
+    {
+      "type": "highlight",
+      "description": "Now, let's look at the core functions responsible for price retrieval and validation in the ChainlinkOracle contract.",
+      "file": "src/oracles/ChainlinkOracle.sol",
+      "highlight": [{ "start": 56, "end": 101 }],
+      "title": "",
+      "id": "272"
+    },
+    {
+      "type": "highlight",
+      "description": "Next, we'll examine the IRatiosOracle interface, which defines the standard for providing target allocation ratios.",
+      "file": "src/interfaces/oracles/IRatiosOracle.sol",
+      "highlight": [{ "start": 1, "end": 22 }],
+      "title": "",
+      "id": "262"
+    },
+    {
+      "type": "highlight",
+      "description": "The ManagedRatiosOracle contract is a crucial component of the Oracle System, implementing the IRatiosOracle interface to manage target ratios for vault tokens. Let's examine its key functions and features:\n\n1. updateRatios: This function allows admins to update target ratios for a vault. It performs important validations:\n   - Ensures the number of ratios matches the number of underlying tokens.\n   - Verifies that the cumulative ratio equals Q96 (2^96), maintaining precision.\n\n2. getTargetRatiosX96: Retrieves the current target ratios for a vault.\n\n3. tokensHash: A unique hash of the vault's underlying tokens, used to validate that the stored ratios correspond to the current set of tokens.\n\nThese features ensure that ratio updates are secure, accurate, and aligned with the vault's current token composition. The ManagedRatiosOracle plays a vital role in maintaining the desired token allocation within the vault, directly impacting deposit and withdrawal operations.",
+      "file": "src/oracles/ManagedRatiosOracle.sol",
+      "highlight": [{ "start": 1, "end": 49 }],
+      "title": "",
+      "id": "263"
+    },
+    {
+      "type": "highlight",
+      "description": "The Vault contract integrates ChainlinkOracle and ManagedRatiosOracle for precise valuation and risk management. Let's examine the deposit function to see this integration in action:\n\n1. Lines 308-309: The Vault fetches target ratios from the ManagedRatiosOracle.\n2. Lines 311-317: It calculates the deposit ratio based on these target ratios, ensuring balanced deposits.\n3. Lines 319-341: The Vault uses the ChainlinkOracle (via priceOracle) to get token prices and calculate total value.\n4. Lines 323-328: Price data is fetched for each token, crucial for accurate valuation.\n5. Lines 329-341: The function calculates deposit and total values, essential for determining the correct amount of LP tokens to mint.\n\nThis integration ensures that deposits maintain the desired token ratios and are valued accurately, which is critical for risk management in a multi-asset vault.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 282, "end": 350 }],
+      "title": "",
+      "id": "264"
+    },
+    {
+      "type": "highlight",
+      "description": "The VaultConfigurator contract manages critical Vault parameters, including oracle settings. It implements a two-step process for updating these settings, enhancing security:\n\n1. Staging: An admin proposes a new oracle address (e.g., stagePriceOracle, stageRatiosOracle).\n2. Committing: After a delay, the admin can finalize the change (e.g., commitPriceOracle, commitRatiosOracle).\n\nThis process allows for review and provides a window to detect and prevent malicious changes. The contract also includes rollback functions as an additional safety measure.\n\nNote the separate functions for price and ratios oracles, reflecting their distinct roles in the system. This granular control allows for precise management of the Vault's price feed and allocation strategy.",
+      "file": "src/VaultConfigurator.sol",
+      "highlight": [{ "start": 508, "end": 545 }],
+      "title": "",
+      "id": "265"
+    },
+    {
+      "type": "textOnly",
+      "description": "We've explored the key components of the Oracle System and Price Feeds in the Mellow LRT project. The ChainlinkOracle provides reliable price data, while the ManagedRatiosOracle manages target ratios for vault tokens. These oracles are integrated into the Vault contract for accurate valuation and risk management. The VaultConfigurator ensures proper setup and management of oracle settings, contributing to the overall security and reliability of the system.",
+      "title": "",
+      "id": "266"
+    }
+  ]
+}

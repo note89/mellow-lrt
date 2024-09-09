@@ -2,84 +2,227 @@
   {
     "file": "src/Vault.sol",
     "formulas": [
-      "\\mathsf{at}(withdrawers_, offset + i)",
-      "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
-      "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
-      "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
-      "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
-      "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))",
-      "depositValue + \\frac{amount \\cdot priceX96}{Q96}",
-      "\\frac{depositValue \\cdot totalSupply}{totalValue}",
-      "\\frac{lpAmount \\cdot totalValue}{totalSupply}",
-      "\\frac{value \\cdot D9 - feeD9}{D9}",
-      "\\frac{value \\cdot Q96}{ratiosX96Value}",
-      "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))"
+      {
+        "formula": "\\mathsf{at}(withdrawers_, offset + i)",
+        "lineRange": {
+          "start": 59,
+          "end": 60
+        }
+      },
+      {
+        "formula": "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
+        "lineRange": {
+          "start": 230,
+          "end": 230
+        }
+      },
+      {
+        "formula": "\\mathsf{tvl}(\\mathsf{ITvlModule}(module), this)",
+        "lineRange": {
+          "start": 161,
+          "end": 161
+        }
+      },
+      {
+        "formula": "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
+        "lineRange": {
+          "start": 255,
+          "end": 255
+        }
+      },
+      {
+        "formula": "\\mathsf{IValidator}(\\mathsf{validator}(configurator))",
+        "lineRange": {
+          "start": 273,
+          "end": 273
+        }
+      },
+      {
+        "formula": "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))",
+        "lineRange": {
+          "start": 323,
+          "end": 323
+        }
+      },
+      {
+        "formula": "depositValue + \\frac{amount \\cdot priceX96}{Q96}",
+        "lineRange": {
+          "start": 340,
+          "end": 340
+        }
+      },
+      {
+        "formula": "\\frac{depositValue \\cdot totalSupply}{totalValue}",
+        "lineRange": {
+          "start": 366,
+          "end": 366
+        }
+      },
+      {
+        "formula": "\\frac{lpAmount \\cdot totalValue}{totalSupply}",
+        "lineRange": {
+          "start": 409,
+          "end": 413
+        }
+      },
+      {
+        "formula": "\\frac{value \\cdot D9 - feeD9}{D9}",
+        "lineRange": {
+          "start": 492,
+          "end": 492
+        }
+      },
+      {
+        "formula": "\\frac{value \\cdot Q96}{ratiosX96Value}",
+        "lineRange": {
+          "start": 493,
+          "end": 493
+        }
+      },
+      {
+        "formula": "\\mathsf{IPriceOracle}(\\mathsf{priceOracle}(configurator))",
+        "lineRange": {
+          "start": 532,
+          "end": 532
+        }
+      }
     ]
   },
+
   {
     "file": "src/libraries/external/FullMath.sol",
     "formulas": [
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "inv \\cdot 2.0 - denominator \\cdot inv",
-      "\\frac{a \\cdot b}{denominator}"
+      {
+        "formula": "inv \\cdot 2.0 - denominator \\cdot inv",
+        "lineRange": {
+          "start": 102,
+          "end": 104
+        }
+      },
+      {
+        "formula": "\\frac{a \\cdot b}{denominator}",
+        "lineRange": {
+          "start": 200,
+          "end": 203
+        }
+      }
     ]
   },
   {
     "file": "src/modules/erc20/ERC20SwapModule.sol",
     "formulas": [
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenIn), this)",
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenOut), this)",
-      "tokenInBefore - \\mathsf{balanceOf}(\\mathsf{IERC20}(tokenIn), this)",
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenOut), this) - tokenOutBefore"
+      {
+        "formula": "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenIn), this)",
+        "lineRange": {
+          "start": 45,
+          "end": 47
+        }
+      },
+      {
+        "formula": "\\mathsf{balanceOf}(\\mathsf{IERC20}(tokenOut), this) - tokenOutBefore",
+        "lineRange": {
+          "start": 110,
+          "end": 115
+        }
+      }
     ]
   },
   {
     "file": "src/modules/erc20/ERC20TvlModule.sol",
-    "formulas": ["\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))"]
+    "formulas": [
+      {
+        "formula": "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))",
+        "lineRange": {
+          "start": 21,
+          "end": 23
+        }
+      }
+    ]
   },
   {
     "file": "src/modules/obol/StakingModule.sol",
     "formulas": [
-      "\\mathsf{IDepositSecurityModule}(\\mathsf{depositSecurityModule}(lidoLocator))",
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(weth), this)",
-      "\\mathsf{getBufferedEther}(\\mathsf{ISteth}(steth))",
-      "\\mathsf{min}(\\mathsf{getStakingModuleMaxDepositsCount}(\\mathsf{IStakingRouter}(\\mathsf{STAKING_ROUTER}(depositSecurityModule)), stakingModuleId, wethBalance + bufferedEther - unfinalizedStETH), \\mathsf{getMaxDeposits}(depositSecurityModule))",
-      "\\mathsf{min}(wethBalance, 32.0 \\cdot maxDepositsCount)"
+      {
+        "formula": "\\mathsf{IDepositSecurityModule}(\\mathsf{depositSecurityModule}(lidoLocator))",
+        "lineRange": {
+          "start": 58,
+          "end": 62
+        }
+      },
+      {
+        "formula": "\\mathsf{min}(wethBalance, 32.0 \\cdot maxDepositsCount)",
+        "lineRange": {
+          "start": 200,
+          "end": 205
+        }
+      }
     ]
   },
   {
     "file": "src/oracles/ChainlinkOracle.sol",
     "formulas": [
-      "\\mathsf{decimals}(\\mathsf{IAggregatorV3}(aggregatorV3))",
-      "\\frac{tokenPrice \\cdot 10.0^{baseDecimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(baseToken))} \\cdot Q96}{baseTokenPrice \\cdot 10.0^{decimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(token))}}"
+      {
+        "formula": "\\frac{tokenPrice \\cdot 10.0^{baseDecimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(baseToken))} \\cdot Q96}{baseTokenPrice \\cdot 10.0^{decimals + \\mathsf{decimals}(\\mathsf{IERC20Metadata}(token))}}",
+        "lineRange": {
+          "start": 56,
+          "end": 69
+        }
+      }
     ]
   },
   {
     "file": "src/oracles/ManagedRatiosOracle.sol",
     "formulas": [
-      "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))",
-      "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))"
+      {
+        "formula": "\\mathsf{underlyingTokens}(\\mathsf{IVault}(vault))",
+        "lineRange": {
+          "start": 68,
+          "end": 70
+        }
+      }
     ]
   },
   {
     "file": "src/oracles/WStethRatiosAggregatorV3.sol",
     "formulas": [
-      "\\mathsf{getStETHByWstETH}(\\mathsf{IWSteth}(wsteth), 10.0^{decimals})"
+      {
+        "formula": "\\mathsf{getStETHByWstETH}(\\mathsf{IWSteth}(wsteth), 10.0^{decimals})",
+        "lineRange": {
+          "start": 88,
+          "end": 90
+        }
+      }
     ]
   },
   {
     "file": "src/strategies/SimpleDVTStakingStrategy.sol",
-    "formulas": ["\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), vault)"]
+    "formulas": [
+      {
+        "formula": "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), vault)",
+        "lineRange": {
+          "start": 152,
+          "end": 155
+        }
+      }
+    ]
   },
   {
     "file": "src/utils/DepositWrapper.sol",
     "formulas": [
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), this)",
-      "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), wrapper)"
+      {
+        "formula": "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), this)",
+        "lineRange": {
+          "start": 210,
+          "end": 213
+        }
+      },
+      {
+        "formula": "\\mathsf{balanceOf}(\\mathsf{IERC20}(wsteth), wrapper)",
+        "lineRange": {
+          "start": 214,
+          "end": 217
+        }
+      }
     ]
   }
 ]

@@ -24,119 +24,119 @@
       "title": "",
       "id": "1767"
     },
-      {
-        "type": "highlight",
-        "description": "This is the emergencyWithdraw function declaration. This function allows users to withdraw their funds in emergency situations, bypassing normal withdrawal procedures.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 377, "end": 384 }],
-        "title": "",
-        "id": "234234"
-      },
-      {
-        "type": "highlight",
-        "description": "Here we check for reentrency (read in contract ReentrancyGuard) and make sure this is called within the deadline(up next).", 
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 382, "end": 383 }],
-        "title": "",
-        "id": "324234234"
-      },
-      {
-        "type": "highlight",
-        "description": "Here is the logic for the deadline modifier",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 30, "end": 33 }],
-        "title": "",
-        "id": "1"
-      },
-      {
-        "type": "highlight",
-        "description": "Here we're getting the current block timestamp and the address of the person calling this function. This is crucial for verifying the withdrawal request's validity.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 385, "end": 386 }],
-        "title": "",
-        "id": "2"
-      },
-      {
-        "type": "highlight",
-        "description": "This line checks if the sender has a pending withdrawal request. If not, the transaction is reverted. This ensures only users who have properly requested a withdrawal can use this function.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 387, "end": 387 }],
-        "title": "",
-        "id": "3"
-      },
-      {
-        "type": "highlight",
-        "description": "This retrieves the specific withdrawal request details for the sender from the contract's storage.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 388, "end": 388 }],
-        "title": "",
-        "id": "4"
-      },
-      {
-        "type": "highlight",
-        "description": "This block checks if the withdrawal deadline has passed. If it has, the withdrawal request is cancelled and the function returns without processing the withdrawal. This prevents outdated requests from being processed.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 389, "end": 392 }],
-        "title": "",
-        "id": "5"
-      },
-      {
-        "type": "highlight",
-        "description": "This checks if enough time has passed since the withdrawal request was made. This delay is a security measure to prevent immediate emergency withdrawals. If not enough time has passed, the transaction is reverted.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 394, "end": 398 }],
-        "title": "",
-        "id": "6"
-      },
-      {
-        "type": "highlight",
-        "description": "These lines get the total supply of LP tokens and the current amounts of all tokens in the pool. This information is needed to calculate the user's share of the pool.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 400, "end": 401 }],
-        "title": "",
-        "id": "7"
-      },
-      {
-        "type": "highlight",
-        "description": "This ensures that the number of minimum amounts provided by the user matches the number of tokens in the pool. It's a safety check to prevent mismatches in token arrays.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 402, "end": 402 }],
-        "title": "",
-        "id": "8"
-      },
-      {
-        "type": "highlight",
-        "description": "This creates an array to store the actual amounts that will be withdrawn for each token.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 403, "end": 403 }],
-        "title": "",
-        "id": "9"
-      },
-      {
-        "type": "highlight",
-        "description": "This starts a loop that will process each token in the pool. It calculates and transfers the user's share of each token.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 404, "end": 417 }],
-        "title": "",
-        "id": "10"
-      },
-      {
-        "type": "highlight",
-        "description": "These lines clean up after the withdrawal. They remove the withdrawal request, remove the user from the pending withdrawers list, and burn the LP tokens that were withdrawn.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 418, "end": 420 }],
-        "title": "",
-        "id": "11"
-      },
-      {
-        "type": "highlight",
-        "description": "This emits an event with details about the emergency withdrawal that just occurred. It's important for transparency and off-chain tracking of contract activities.",
-        "file": "src/Vault.sol",
-        "highlight": [{ "start": 421, "end": 421 }],
-        "title": "",
-        "id": "12"
-      },
-    
+    {
+      "type": "highlight",
+      "description": "This is the emergencyWithdraw function declaration. This function allows users to withdraw their funds in emergency situations, bypassing normal withdrawal procedures.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 377, "end": 384 }],
+      "title": "",
+      "id": "234234"
+    },
+    {
+      "type": "highlight",
+      "description": "Here we check for reentrency (read in contract ReentrancyGuard) and make sure this is called within the deadline(up next).",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 382, "end": 383 }],
+      "title": "",
+      "id": "324234234"
+    },
+    {
+      "type": "highlight",
+      "description": "Here is the logic for the deadline modifier",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 30, "end": 33 }],
+      "title": "",
+      "id": "1"
+    },
+    {
+      "type": "highlight",
+      "description": "Here we're getting the current block timestamp and the address of the person calling this function. This is crucial for verifying the withdrawal request's validity.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 385, "end": 386 }],
+      "title": "",
+      "id": "2"
+    },
+    {
+      "type": "highlight",
+      "description": "This line checks if the sender has a pending withdrawal request. If not, the transaction is reverted. This ensures only users who have properly requested a withdrawal can use this function.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 387, "end": 387 }],
+      "title": "",
+      "id": "3"
+    },
+    {
+      "type": "highlight",
+      "description": "This retrieves the specific withdrawal request details for the sender from the contract's storage.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 388, "end": 388 }],
+      "title": "",
+      "id": "4"
+    },
+    {
+      "type": "highlight",
+      "description": "This block checks if the withdrawal deadline has passed. If it has, the withdrawal request is cancelled and the function returns without processing the withdrawal. This prevents outdated requests from being processed.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 389, "end": 392 }],
+      "title": "",
+      "id": "5"
+    },
+    {
+      "type": "highlight",
+      "description": "This checks if enough time has passed since the withdrawal request was made. This delay is a security measure to prevent immediate emergency withdrawals. If not enough time has passed, the transaction is reverted.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 394, "end": 398 }],
+      "title": "",
+      "id": "6"
+    },
+    {
+      "type": "highlight",
+      "description": "These lines get the total supply of LP tokens and the current amounts of all tokens in the pool. This information is needed to calculate the user's share of the pool.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 400, "end": 401 }],
+      "title": "",
+      "id": "7"
+    },
+    {
+      "type": "highlight",
+      "description": "This ensures that the number of minimum amounts provided by the user matches the number of tokens in the pool. It's a safety check to prevent mismatches in token arrays.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 402, "end": 402 }],
+      "title": "",
+      "id": "8"
+    },
+    {
+      "type": "highlight",
+      "description": "This creates an array to store the actual amounts that will be withdrawn for each token.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 403, "end": 403 }],
+      "title": "",
+      "id": "9"
+    },
+    {
+      "type": "highlight",
+      "description": "This starts a loop that will process each token in the pool. It calculates and transfers the user's share of each token.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 404, "end": 417 }],
+      "title": "",
+      "id": "10"
+    },
+    {
+      "type": "highlight",
+      "description": "These lines clean up after the withdrawal. They remove the withdrawal request, remove the user from the pending withdrawers list, and burn the LP tokens that were withdrawn.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 418, "end": 420 }],
+      "title": "",
+      "id": "11"
+    },
+    {
+      "type": "highlight",
+      "description": "This emits an event with details about the emergency withdrawal that just occurred. It's important for transparency and off-chain tracking of contract activities.",
+      "file": "src/Vault.sol",
+      "highlight": [{ "start": 421, "end": 421 }],
+      "title": "",
+      "id": "12"
+    },
+
     {
       "type": "textOnly",
       "description": "The ManagedValidator contract implements the access control system for the LRT. This is a critical component for the security of the entire system, as it determines who can perform various actions.",
